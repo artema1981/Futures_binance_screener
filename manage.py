@@ -2,7 +2,8 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+from redis_db import redis_client
+from Large_order.symbols import all_futures_binance
 
 def main():
     """Run administrative tasks."""
@@ -18,5 +19,9 @@ def main():
     execute_from_command_line(sys.argv)
 
 
+
+
 if __name__ == '__main__':
+    redis_client.flushall()
+    all_futures_binance()
     main()
