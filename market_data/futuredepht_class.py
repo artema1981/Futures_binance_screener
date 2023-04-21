@@ -25,6 +25,7 @@ class FutureDepth(MarketDataDepth):
         self.depth_snapshot = message
 
     def message_handler(self, message):
+        print(message)
 
         if message.get('e') == "depthUpdate":
             self.U = int(message["U"])
@@ -49,9 +50,12 @@ class FutureDepth(MarketDataDepth):
             self.u = int(message["u"])
             self.exist_u = True
 
-        # if self.symbol == 'BTCUSDT':
-        #     logger.log("ASKS", f"{self.symbol}, asks, {self.depth_snapshot['asks']}")
-        #     logger.log("BIDS", f"{self.symbol}, bids, {self.depth_snapshot['bids']}")
+
+            # print(self.depth_snapshot)
+
+        if self.symbol == 'BTCUSDT':
+            logger.log("ASKS", f"{self.symbol}, asks, {self.depth_snapshot['asks']}")
+            logger.log("BIDS", f"{self.symbol}, bids, {self.depth_snapshot['bids']}")
 
     def start_stream(self):
         my_client.diff_book_depth(

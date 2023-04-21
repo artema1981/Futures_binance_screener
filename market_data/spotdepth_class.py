@@ -17,8 +17,8 @@ class SpotDepth(MarketDataDepth):
         self.restart_counter = 0
         self.snapshot_update_counter = 0
 
-    def start_stream(self):
 
+    def start_stream(self):
         def on_message(ws, message):
             message = json.loads(message)
             if message.get('e') == "depthUpdate":
@@ -43,6 +43,8 @@ class SpotDepth(MarketDataDepth):
                         del self.depth_snapshot['bids'][i]
                 self.u = int(message["u"])
                 self.exist_u = True
+
+                # print(self.depth_snapshot)
                 # if self.symbol == 'ZILUSDT':
                 #     logger.log("ASKS", f"{self.symbol}, asks, {self.depth_snapshot['asks']}")
                 #     logger.log("BIDS", f"{self.symbol}, bids, {self.depth_snapshot['bids']}")
@@ -98,62 +100,3 @@ class SpotDepth(MarketDataDepth):
             self.depth_snapshot = message_spot
         except:
             logger.log('INF', f"EXCEPT update_depth_snapshot.  {self.symbol}, {message_spot}")
-
-
-# from .base_class import MarketDataDepth
-# from loguru import logger
-# import requests
-# import json
-#
-# import sys
-# sys.path.insert(0, 'bin_spot')
-# from bin_spot.binance.websocket.spot.websocket_stream import SpotWebsocketStreamClient
-#
-#
-# class SpotDepth(MarketDataDepth):
-#     ID_stream = 1000
-#
-#     def __init__(self, symbol):
-#         super().__init__(symbol)
-#         self.U = None
-#         self.u = 0
-#         self.pu = None
-#
-#     def start_stream(self):
-#         def message_handler(_, message):
-#             message = json.loads(message)
-#             if message.get('e') == "depthUpdate":
-#                 self.U = int(message["U"])
-#                 if self.exist_u and not self.u + 1 == self.U:
-#                     print('self.update_depth_snapshot()')
-#                     self.update_depth_snapshot()
-#                 self.depth_snapshot['asks'].update(message['a'])
-#                 self.depth_snapshot['bids'].update(message['b'])
-#
-#                 f1 = list(filter(lambda key: float(self.depth_snapshot['asks'][key]) == 0, self.depth_snapshot['asks']))
-#                 f2 = list(filter(lambda key: float(self.depth_snapshot['bids'][key]) == 0, self.depth_snapshot['bids']))
-#                 if f1:
-#                     for i in f1:
-#                         del self.depth_snapshot['asks'][i]
-#                 if f2:
-#                     for i in f2:
-#                         del self.depth_snapshot['bids'][i]
-#
-#                 self.u = int(message["u"])
-#                 self.exist_u = True
-#
-#                 if self.symbol == 'BTCUSDT':
-#                     logger.log("ASKS", f"{self.symbol}, asks, {self.depth_snapshot['asks']}")
-#                     logger.log("BIDS", f"{self.symbol}, bids, {self.depth_snapshot['bids']}")
-#
-#         my_client = SpotWebsocketStreamClient(on_message=message_handler)
-#         my_client.diff_book_depth(symbol=self.symbol, speed=100)
-#         return message_handler
-#
-#     def update_depth_snapshot(self):
-#         message_spot = requests.get(f"https://api.binance.com/api/v3/depth?symbol={self.symbol}&limit=1000").json()
-#         message_spot['asks'] = dict(message_spot['asks'])
-#         message_spot['bids'] = dict(message_spot['bids'])
-#         logger.log("SPOT", f"{self.symbol}, {message_spot}")
-#         self.last_update_id = int(message_spot.get('lastUpdateId'))
-#         self.depth_snapshot = message_spot
