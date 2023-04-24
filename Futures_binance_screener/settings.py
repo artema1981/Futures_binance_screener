@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Large_order.apps.LargeOrderConfig',
+    'corsheaders',
     'rest_framework'
 ]
 
@@ -49,7 +50,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSIONS_CLASSES': (
+        'rest_framework.permissions.AllowAny'
+    )
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'Futures_binance_screener.urls'
 

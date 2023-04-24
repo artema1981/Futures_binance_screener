@@ -20,5 +20,7 @@ from Large_order.views import DepthBookAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/book', DepthBookAPIView.as_view())
+    # path('api/v1/book/', DepthBookAPIView.as_view(), name='depth')
+    path('', DepthBookAPIView.as_view(), name='depth')
+
 ]

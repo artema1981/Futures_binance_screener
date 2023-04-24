@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    justify-content: space-between;
+}
+
+.App {
+    width: 800px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.item {
+    display: flex;
+    padding: 1px;
+    border: 2px black inset;
+    margin-top: 5px;
+}
+
+.item_symbol {
+    width: 100px;
+    display: flex;
+    padding: 16px;
+    /*border: 2px black inset;*/
+    background: #211a1a;
+    margin-top: 0px;
+}
+
+.button {
+
+    display: flex;
+    margin-top: 5px;
+}
+
+h5 {
+    color: white;
+}
+
+p {
+    width: 100px;
+    color: white;
+}
+
+p.s {
+    background: #960c0c;
+
+}
+p.f {
+    background: #255205;
+
+}
