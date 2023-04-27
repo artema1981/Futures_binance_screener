@@ -18,6 +18,7 @@ class MarketDataDepth:
         self.last_update_id = None
         self.update_depth_snapshot()
         self.start_stream()
+
     def get_data(self, volume_USDT):
         try:
             if not self.depth_snapshot:
@@ -46,15 +47,15 @@ class MarketDataDepth:
                 bid_volume_usdt = int(bid_price * bid_volume)
 
             res = {
-                    'best_ask': ask_price,
-                    'percent_ask': percent_ask,
-                    'ask_volume': ask_volume,
-                    'ask_volume_usdt': shorten_number(ask_volume_usdt),
-                    'best_bid': bid_price,
-                    'percent_bid': percent_bid,
-                    'bid_volume': bid_volume,
-                    'bid_volume_usdt': shorten_number(bid_volume_usdt)
-                    }
+                'best_ask': ask_price,
+                'percent_ask': percent_ask,
+                'ask_volume': ask_volume,
+                'ask_volume_usdt': shorten_number(ask_volume_usdt),
+                'best_bid': bid_price,
+                'percent_bid': percent_bid,
+                'bid_volume': bid_volume,
+                'bid_volume_usdt': shorten_number(bid_volume_usdt)
+            }
         except Exception as e:
             logger.log("EXCE", f'{self.depth_snapshot} | {e}')
             res = {
@@ -70,41 +71,9 @@ class MarketDataDepth:
             self.update_depth_snapshot()
 
         return res
+
     def update_depth_snapshot(self):
         pass
 
     def start_stream(self):
         pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

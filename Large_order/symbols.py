@@ -14,12 +14,8 @@ def all_futures_binance():
     all_futures_symbols = []
     for i in res['symbols']:
         if i['status'] == 'TRADING' and \
-                i['contractType'] == 'PERPETUAL' and\
-                i['underlyingType'] == 'COIN' and\
+                i['contractType'] == 'PERPETUAL' and \
+                i['underlyingType'] == 'COIN' and \
                 i['quoteAsset'] == 'USDT':
             all_futures_symbols.append(i)
     set_redis(name='all_futures_binance', value=all_futures_symbols)
-
-
-
-

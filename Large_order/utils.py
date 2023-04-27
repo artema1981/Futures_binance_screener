@@ -1,5 +1,3 @@
-
-
 def shorten_number(value):
     if isinstance(value, (int, float)):
         if value >= 1000000000:
@@ -9,9 +7,3 @@ def shorten_number(value):
         elif value >= 1000:
             value = f'{value / 1000:.0f}_K'
         return value
-
-
-
-
-
-

@@ -49,9 +49,6 @@ class FutureDepth(MarketDataDepth):
             self.u = int(message["u"])
             self.exist_u = True
 
-
-            # print(self.depth_snapshot)
-        #
         # if self.symbol == 'BTCUSDT':
         #     logger.log("ASKS", f"{self.symbol}, asks, {self.depth_snapshot['asks']}")
         #     logger.log("BIDS", f"{self.symbol}, bids, {self.depth_snapshot['bids']}")

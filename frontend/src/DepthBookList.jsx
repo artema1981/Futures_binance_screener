@@ -1,44 +1,124 @@
 import './App.css';
 import React from 'react';
 import axios from 'axios';
+import Header from "./Header";
 
-class DepthBookList extends React.Component{
-    state = {details: [], }
+class DepthBookList extends React.Component {
+    state = {details: [],}
 
     componentDidMount() {
-        let  data;
+        let data;
         axios.get('http://127.0.0.1:8000/')
-        .then(res => {
-          data = res.data;
-          this.setState({
-                details: data
-          });
-        })
-          .catch(err => {
+            .then(res => {
+                data = res.data;
+                this.setState({
+                    details: data
+                });
+            })
+            .catch(err => {
                 console.log(err);
             })
     }
 
-      M1 = () => {
+    M1 = () => {
         axios
-          .get('http://127.0.0.1:8000/', {
-            params: {
-              USDT_volume: 1000000,
-            },
-          })
-          .then((res) => {
-            this.setState({
-              details: res.data,
+            .get('http://127.0.0.1:8000/', {
+                params: {
+                    USDT_volume: 1000000,
+                },
+            })
+            .then((res) => {
+                this.setState({
+                    details: res.data,
+                });
+
+            })
+            .catch((err) => {
+                console.log(err);
             });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
+    };
+    K750 = () => {
+        axios
+            .get('http://127.0.0.1:8000/', {
+                params: {
+                    USDT_volume: 750000,
+                },
+            })
+            .then((res) => {
+                this.setState({
+                    details: res.data,
+                });
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+    K500 = () => {
+        axios
+            .get('http://127.0.0.1:8000/', {
+                params: {
+                    USDT_volume: 750000,
+                },
+            })
+            .then((res) => {
+                this.setState({
+                    details: res.data,
+                });
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+    K500 = () => {
+        axios
+            .get('http://127.0.0.1:8000/', {
+                params: {
+                    USDT_volume: 500000,
+                },
+            })
+            .then((res) => {
+                this.setState({
+                    details: res.data,
+                });
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+    K250 = () => {
+        axios
+            .get('http://127.0.0.1:8000/', {
+                params: {
+                    USDT_volume: 250000,
+                },
+            })
+            .then((res) => {
+                this.setState({
+                    details: res.data,
+                });
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     render() {
         return (
             <div>
-                <button onClick={this.M1}>Обновить данные</button>
+                <div className='button'>
+                    <button className='button' onClick={this.K250}>250K</button>
+                    <button className='button' onClick={this.K500}>500K</button>
+                    <button className='button' onClick={this.K750}>750K</button>
+                    <button className='button' onClick={this.M1}>1M</button>
+                </div>
+                <div>
+                    <Header/>
+                </div>
+                {/*<button onClick={this.M1}>Обновить данные</button>*/}
                 <hr></hr>
                 {this.state.details.map((output, id) => {
                     console.log(output)
