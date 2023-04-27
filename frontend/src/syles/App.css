@@ -16,6 +16,31 @@
     padding: 16px;
 }
 
+.row_head {
+    /*width: 800px;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+    padding: 5px;
+    background: #000000;
+}
+.row_ask {
+    width: 800px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #960c0c;
+}
+.row_bid {
+    width: 800px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #134d04;
+}
+.v {
+    padding: 5px;
+}
+
 .item {
     display: flex;
     padding: 1px;
@@ -25,17 +50,18 @@
 
 .item_symbol {
     width: 100px;
-    display: flex;
-    padding: 16px;
-    /*border: 2px black inset;*/
+    border: 2px black inset;
     background: #211a1a;
-    margin-top: 0px;
 }
 
 .button {
-
     display: flex;
     margin-top: 5px;
+    margin-right: 10px;
+
+
+
+
 }
 
 h5 {
@@ -54,4 +80,20 @@ p.s {
 p.f {
     background: #255205;
 
+}
+header {
+    background-color: white;
+}
+.themed-grid-col {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(86, 61, 124, .15);
+  border: 1px solid rgba(86, 61, 124, .2);
+}
+
+.themed-container {
+  padding: .75rem;
+  margin-bottom: 1.5rem;
+  background-color: rgba(0, 123, 255, .15);
+  border: 1px solid rgba(0, 123, 255, .2);
 }

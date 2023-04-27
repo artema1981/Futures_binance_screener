@@ -21,6 +21,3 @@ class DepthBookAPIView(APIView):
         output = DepthBookSerializer(queryset, many=True).data
         return Response(output)
 
-    # def get(self, request):
-    #     output = [{'a': 676, 'b': 25675675}]
-    #     return Response(output)
