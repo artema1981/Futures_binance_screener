@@ -4,7 +4,7 @@ import os
 import sys
 from redis_db import redis_client
 from Large_order.symbols import all_futures_binance
-from market_data.instans_lists import all_book_depth, create_RDB_list
+from market_data.instans_lists import all_book_depth
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Futures_binance_screener.settings')
@@ -25,5 +25,4 @@ if __name__ == '__main__':
     redis_client.flushall()
     all_futures_binance()
     all_book_depth()
-    # create_RDB_list()
     main()

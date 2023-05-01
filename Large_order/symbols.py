@@ -4,7 +4,7 @@ from binance.um_futures import UMFutures
 
 
 def all_futures_binance():
-    pass
+
     """
     Api futures binance_futures.
     set to redis db list of dict coins data

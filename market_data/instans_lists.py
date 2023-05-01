@@ -2,6 +2,7 @@ from .spotdepth_class import SpotDepth
 from .futuredepht_class import FutureDepth
 from redis_db import *
 
+
 import time
 
 spot_obj_list = []
@@ -9,10 +10,13 @@ future_obj_list = []
 
 
 def all_book_depth():
+    print('Loading data from Binance.\nPlease wait 6 min.')
     symbols = json.loads(get_redis('all_futures_binance'))
     symbols_future = [d.get('symbol') for d in symbols]
+    if 'BLURUSDT' in symbols_future:
+        symbols_future.pop(symbols_future.index('BLURUSDT'))
     symbols_spot = []
-    for i in symbols_future[0:6]:
+    for i in symbols_future:
         if i[:4] == '1000':
             symbols_spot.append(i[4:])
         elif i == 'LUNA2USDT':
